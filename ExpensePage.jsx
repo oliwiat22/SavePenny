@@ -1,8 +1,10 @@
+import ExpenseTracker from './components/ExpenseTracker';
+
 function ExpensePage() {
 
   return (
-    <div>
-        <h1>rrrr</h1>
+    <div className='expense-page'>
+        <ExpenseTracker/>
     </div>
     
   )
