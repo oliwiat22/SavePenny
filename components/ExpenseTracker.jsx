@@ -1,12 +1,23 @@
 import { useState } from 'react';
+import { addProduct } from '../API/productApi';
 import './ExpenseTracker.css';
-
 
 function ExpenseTracker() {
   const [expenses, setExpenses] = useState([]);
   const [newExpense, setNewExpense] = useState({ expense: '', amount: '' });
 
   const addExpense = () => {
+    if (newExpense.expense.trim() === '' || newExpense.amount.trim() === '') {
+      alert('Nie zostawiaj pustych pól.');
+      return;
+    }
+
+    addProduct(newExpense.expense, newExpense.amount)
+      .then ((response) => {
+        console.log(response.data)
+      }).catch(error=>{
+        console.log(error)
+      })
     setExpenses([...expenses, newExpense]);
     setNewExpense({ expense: '', amount: '' });
   };

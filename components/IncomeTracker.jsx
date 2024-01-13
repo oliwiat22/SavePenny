@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import './ExpenseTracker.css';
 
-
 function IncomeTracker() {
   const [incomes, setIncomes] = useState([]);
   const [newIncome, setNewIncome] = useState({ income: '', amount: '' });
 
   const addIncome = () => {
+    if (newIncome.income.trim() === '' || newIncome.amount.trim() === '') {
+      alert('Nie zostawiaj pustych pól.');
+      return;
+    }
+
     setIncomes([...incomes, newIncome]);
     setNewIncome({ income: '', amount: '' });
   };
